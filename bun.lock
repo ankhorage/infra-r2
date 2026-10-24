@@ -3,7 +3,7 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "@ankhorage/r2",
+      "name": "@ankhorage/infra-r2",
       "dependencies": {
         "@ankhorage/contracts": "^16.0.0",
         "@ankhorage/utility": "^0.8.0",
