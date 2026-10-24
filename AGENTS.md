@@ -4,7 +4,7 @@
 
 ## Repository
 
-Package: `@ankhorage/r2`
+Package: `@ankhorage/infra-r2`
 
 Cloudflare R2 object-storage adapter for provider-neutral Ankhorage infrastructure.
 
