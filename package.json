@@ -1,6 +1,6 @@
 {
   "name": "@ankhorage/infra-r2",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Cloudflare R2 object-storage adapter for provider-neutral Ankhorage infrastructure.",
   "type": "module",
   "main": "./dist/index.js",

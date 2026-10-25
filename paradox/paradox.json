@@ -1,6 +1,6 @@
 {
-  "packageName": "@ankhorage/r2",
-  "packageId": "@ankhorage/r2",
+  "packageName": "@ankhorage/infra-r2",
+  "packageId": "@ankhorage/infra-r2",
   "description": "Cloudflare R2 object-storage adapter for provider-neutral Ankhorage infrastructure.",
   "collaborators": null,
   "donation": null,
@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v0.1.0",
+      "value": "v0.2.2",
       "color": "cb3837"
     },
     {

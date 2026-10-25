@@ -1,5 +1,11 @@
 # @ankhorage/r2
 
+## 0.2.2
+
+### Patch Changes
+
+- 422088a: Publish releases through npm Trusted Publishing instead of a bootstrap token.
+
 ## 0.2.1
 
 ### Patch Changes

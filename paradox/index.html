@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>@ankhorage/r2 • Paradox</title>
+    <title>@ankhorage/infra-r2 • Paradox</title>
     <style>
       :root {
         color-scheme: light;
@@ -184,7 +184,7 @@
     <div class="layout">
       <aside class="sidebar">
         <p class="muted">Generated with Paradox</p>
-        <h1>@ankhorage/r2</h1>
+        <h1>@ankhorage/infra-r2</h1>
         <p>Cloudflare R2 object-storage adapter for provider-neutral Ankhorage infrastructure.</p>
         <input id="search" class="search" type="search" placeholder="Search current view" />
         <nav aria-label="Documentation sections">
@@ -807,52 +807,52 @@
               <h3>Architecture overview</h3>
               <p class="muted"><code>diagrams/architecture-overview.mmd</code></p>
               <div class="mermaid">
-                graph TD package__ankhorage_r2[&quot;@ankhorage/r2&quot;]
-                entrypoint_src_index_ts[&quot;src/index.ts&quot;] package__ankhorage_r2 --&gt;
+                graph TD package__ankhorage_infra_r2[&quot;@ankhorage/infra-r2&quot;]
+                entrypoint_src_index_ts[&quot;src/index.ts&quot;] package__ankhorage_infra_r2 --&gt;
                 entrypoint_src_index_ts
                 module_examples_basic_usage_index_ts[&quot;examples/basic-usage/index.ts&quot;]
-                package__ankhorage_r2 -.-&gt; module_examples_basic_usage_index_ts
+                package__ankhorage_infra_r2 -.-&gt; module_examples_basic_usage_index_ts
                 module_examples_basic_usage_index_ts --&gt; module_dist_index_d_ts
                 module_src_constants_infra_ts[&quot;src/constants/infra.ts&quot;]
-                package__ankhorage_r2 -.-&gt; module_src_constants_infra_ts
+                package__ankhorage_infra_r2 -.-&gt; module_src_constants_infra_ts
                 module_src_features_object_storage_adapters_outbound_createCloudflareR2ControlPlane_ts[&quot;src/features/object-storage/adapters/outbound/createCloudflareR2ControlPlane.ts&quot;]
-                package__ankhorage_r2 -.-&gt;
+                package__ankhorage_infra_r2 -.-&gt;
                 module_src_features_object_storage_adapters_outbound_createCloudflareR2ControlPlane_ts
                 module_src_features_object_storage_adapters_outbound_createCloudflareR2ControlPlane_ts
                 --&gt; module_src_types_r2_ts
                 module_src_features_object_storage_application_destroyR2Async_ts[&quot;src/features/object-storage/application/destroyR2Async.ts&quot;]
-                package__ankhorage_r2 -.-&gt;
+                package__ankhorage_infra_r2 -.-&gt;
                 module_src_features_object_storage_application_destroyR2Async_ts
                 module_src_features_object_storage_application_destroyR2Async_ts --&gt;
                 module_src_types_r2_ts
                 module_src_features_object_storage_application_getR2StatusAsync_ts[&quot;src/features/object-storage/application/getR2StatusAsync.ts&quot;]
-                package__ankhorage_r2 -.-&gt;
+                package__ankhorage_infra_r2 -.-&gt;
                 module_src_features_object_storage_application_getR2StatusAsync_ts
                 module_src_features_object_storage_application_getR2StatusAsync_ts --&gt;
                 module_src_features_object_storage_application_resolveR2DesiredStateAsync_ts
                 module_src_features_object_storage_application_getR2StatusAsync_ts --&gt;
                 module_src_types_r2_ts
                 module_src_features_object_storage_application_planR2Async_ts[&quot;src/features/object-storage/application/planR2Async.ts&quot;]
-                package__ankhorage_r2 -.-&gt;
+                package__ankhorage_infra_r2 -.-&gt;
                 module_src_features_object_storage_application_planR2Async_ts
                 module_src_features_object_storage_application_planR2Async_ts --&gt;
                 module_src_features_object_storage_application_resolveR2DesiredStateAsync_ts
                 module_src_features_object_storage_application_planR2Async_ts --&gt;
                 module_src_types_r2_ts
                 module_src_features_object_storage_application_reconcileR2Async_ts[&quot;src/features/object-storage/application/reconcileR2Async.ts&quot;]
-                package__ankhorage_r2 -.-&gt;
+                package__ankhorage_infra_r2 -.-&gt;
                 module_src_features_object_storage_application_reconcileR2Async_ts
                 module_src_features_object_storage_application_reconcileR2Async_ts --&gt;
                 module_src_features_object_storage_application_resolveR2DesiredStateAsync_ts
                 module_src_features_object_storage_application_reconcileR2Async_ts --&gt;
                 module_src_types_r2_ts
                 module_src_features_object_storage_application_resolveR2DesiredStateAsync_ts[&quot;src/features/object-storage/application/resolveR2DesiredStateAsync.ts&quot;]
-                package__ankhorage_r2 -.-&gt;
+                package__ankhorage_infra_r2 -.-&gt;
                 module_src_features_object_storage_application_resolveR2DesiredStateAsync_ts
                 module_src_features_object_storage_application_resolveR2DesiredStateAsync_ts --&gt;
                 module_src_types_r2_ts
                 module_src_features_object_storage_composition_createInfraAdapter_ts[&quot;src/features/object-storage/composition/createInfraAdapter.ts&quot;]
-                package__ankhorage_r2 -.-&gt;
+                package__ankhorage_infra_r2 -.-&gt;
                 module_src_features_object_storage_composition_createInfraAdapter_ts
                 module_src_features_object_storage_composition_createInfraAdapter_ts --&gt;
                 module_src_constants_infra_ts
@@ -869,47 +869,47 @@
                 module_src_features_object_storage_composition_createInfraAdapter_ts --&gt;
                 module_src_types_r2_ts module_src_index_ts[&quot;src/index.ts&quot;]
                 module_src_infraAdapter_test_ts[&quot;src/infraAdapter.test.ts&quot;]
-                package__ankhorage_r2 -.-&gt; module_src_infraAdapter_test_ts
+                package__ankhorage_infra_r2 -.-&gt; module_src_infraAdapter_test_ts
                 module_src_infraAdapter_test_ts --&gt; module_src_index_ts
                 module_src_infraAdapter_test_ts --&gt; module_src_types_r2_ts
-                module_src_types_r2_ts[&quot;src/types/r2.ts&quot;] package__ankhorage_r2 -.-&gt;
-                module_src_types_r2_ts
+                module_src_types_r2_ts[&quot;src/types/r2.ts&quot;] package__ankhorage_infra_r2
+                -.-&gt; module_src_types_r2_ts
               </div>
               <details>
                 <summary>View Mermaid source</summary>
                 <pre>
 graph TD
-  package__ankhorage_r2[&quot;@ankhorage/r2&quot;]
+  package__ankhorage_infra_r2[&quot;@ankhorage/infra-r2&quot;]
   entrypoint_src_index_ts[&quot;src/index.ts&quot;]
-  package__ankhorage_r2 --&gt; entrypoint_src_index_ts
+  package__ankhorage_infra_r2 --&gt; entrypoint_src_index_ts
   module_examples_basic_usage_index_ts[&quot;examples/basic-usage/index.ts&quot;]
-  package__ankhorage_r2 -.-&gt; module_examples_basic_usage_index_ts
+  package__ankhorage_infra_r2 -.-&gt; module_examples_basic_usage_index_ts
   module_examples_basic_usage_index_ts --&gt; module_dist_index_d_ts
   module_src_constants_infra_ts[&quot;src/constants/infra.ts&quot;]
-  package__ankhorage_r2 -.-&gt; module_src_constants_infra_ts
+  package__ankhorage_infra_r2 -.-&gt; module_src_constants_infra_ts
   module_src_features_object_storage_adapters_outbound_createCloudflareR2ControlPlane_ts[&quot;src/features/object-storage/adapters/outbound/createCloudflareR2ControlPlane.ts&quot;]
-  package__ankhorage_r2 -.-&gt; module_src_features_object_storage_adapters_outbound_createCloudflareR2ControlPlane_ts
+  package__ankhorage_infra_r2 -.-&gt; module_src_features_object_storage_adapters_outbound_createCloudflareR2ControlPlane_ts
   module_src_features_object_storage_adapters_outbound_createCloudflareR2ControlPlane_ts --&gt; module_src_types_r2_ts
   module_src_features_object_storage_application_destroyR2Async_ts[&quot;src/features/object-storage/application/destroyR2Async.ts&quot;]
-  package__ankhorage_r2 -.-&gt; module_src_features_object_storage_application_destroyR2Async_ts
+  package__ankhorage_infra_r2 -.-&gt; module_src_features_object_storage_application_destroyR2Async_ts
   module_src_features_object_storage_application_destroyR2Async_ts --&gt; module_src_types_r2_ts
   module_src_features_object_storage_application_getR2StatusAsync_ts[&quot;src/features/object-storage/application/getR2StatusAsync.ts&quot;]
-  package__ankhorage_r2 -.-&gt; module_src_features_object_storage_application_getR2StatusAsync_ts
+  package__ankhorage_infra_r2 -.-&gt; module_src_features_object_storage_application_getR2StatusAsync_ts
   module_src_features_object_storage_application_getR2StatusAsync_ts --&gt; module_src_features_object_storage_application_resolveR2DesiredStateAsync_ts
   module_src_features_object_storage_application_getR2StatusAsync_ts --&gt; module_src_types_r2_ts
   module_src_features_object_storage_application_planR2Async_ts[&quot;src/features/object-storage/application/planR2Async.ts&quot;]
-  package__ankhorage_r2 -.-&gt; module_src_features_object_storage_application_planR2Async_ts
+  package__ankhorage_infra_r2 -.-&gt; module_src_features_object_storage_application_planR2Async_ts
   module_src_features_object_storage_application_planR2Async_ts --&gt; module_src_features_object_storage_application_resolveR2DesiredStateAsync_ts
   module_src_features_object_storage_application_planR2Async_ts --&gt; module_src_types_r2_ts
   module_src_features_object_storage_application_reconcileR2Async_ts[&quot;src/features/object-storage/application/reconcileR2Async.ts&quot;]
-  package__ankhorage_r2 -.-&gt; module_src_features_object_storage_application_reconcileR2Async_ts
+  package__ankhorage_infra_r2 -.-&gt; module_src_features_object_storage_application_reconcileR2Async_ts
   module_src_features_object_storage_application_reconcileR2Async_ts --&gt; module_src_features_object_storage_application_resolveR2DesiredStateAsync_ts
   module_src_features_object_storage_application_reconcileR2Async_ts --&gt; module_src_types_r2_ts
   module_src_features_object_storage_application_resolveR2DesiredStateAsync_ts[&quot;src/features/object-storage/application/resolveR2DesiredStateAsync.ts&quot;]
-  package__ankhorage_r2 -.-&gt; module_src_features_object_storage_application_resolveR2DesiredStateAsync_ts
+  package__ankhorage_infra_r2 -.-&gt; module_src_features_object_storage_application_resolveR2DesiredStateAsync_ts
   module_src_features_object_storage_application_resolveR2DesiredStateAsync_ts --&gt; module_src_types_r2_ts
   module_src_features_object_storage_composition_createInfraAdapter_ts[&quot;src/features/object-storage/composition/createInfraAdapter.ts&quot;]
-  package__ankhorage_r2 -.-&gt; module_src_features_object_storage_composition_createInfraAdapter_ts
+  package__ankhorage_infra_r2 -.-&gt; module_src_features_object_storage_composition_createInfraAdapter_ts
   module_src_features_object_storage_composition_createInfraAdapter_ts --&gt; module_src_constants_infra_ts
   module_src_features_object_storage_composition_createInfraAdapter_ts --&gt; module_src_features_object_storage_adapters_outbound_createCloudflareR2ControlPlane_ts
   module_src_features_object_storage_composition_createInfraAdapter_ts --&gt; module_src_features_object_storage_application_destroyR2Async_ts
@@ -919,11 +919,11 @@ graph TD
   module_src_features_object_storage_composition_createInfraAdapter_ts --&gt; module_src_types_r2_ts
   module_src_index_ts[&quot;src/index.ts&quot;]
   module_src_infraAdapter_test_ts[&quot;src/infraAdapter.test.ts&quot;]
-  package__ankhorage_r2 -.-&gt; module_src_infraAdapter_test_ts
+  package__ankhorage_infra_r2 -.-&gt; module_src_infraAdapter_test_ts
   module_src_infraAdapter_test_ts --&gt; module_src_index_ts
   module_src_infraAdapter_test_ts --&gt; module_src_types_r2_ts
   module_src_types_r2_ts[&quot;src/types/r2.ts&quot;]
-  package__ankhorage_r2 -.-&gt; module_src_types_r2_ts
+  package__ankhorage_infra_r2 -.-&gt; module_src_types_r2_ts
 </pre>
               </details>
             </article>
