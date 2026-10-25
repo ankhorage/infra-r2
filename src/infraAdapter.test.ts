@@ -11,8 +11,8 @@ import {
   createCloudflareR2ControlPlane,
   createInfraAdapter,
   infraAdapterDescriptor,
-} from './index';
-import type { R2BucketControlPlane, R2BucketObservation, R2CloudRequest } from './types/r2';
+} from './index.js';
+import type { R2BucketControlPlane, R2BucketObservation, R2CloudRequest } from './types/r2.js';
 
 it('exports the exact Contracts catalog descriptor', () => {
   expect(infraAdapterDescriptor).toEqual(INFRA_ADAPTER_CATALOG.r2);
@@ -223,17 +223,19 @@ function createContext(input: {
       objectStorage: {
         provider: 'r2',
         accountId: 'account-id',
-        buckets: input.buckets,
+        buckets: Object.fromEntries(input.buckets.map((bucket) => [bucket, true])),
       },
     },
     ...(input.previous === undefined ? {} : { previous: input.previous }),
     credentials: {
+      findAsync: () => Promise.resolve({ ok: true, value: null, diagnostics: [] }),
       resolveAsync: () =>
         Promise.resolve({
           ok: true,
           value: input.credentials ?? { apiToken: 'test-api-token' },
           diagnostics: [],
         }),
+      persistAsync: () => Promise.resolve({ ok: true, value: null, diagnostics: [] }),
     },
     secrets: {
       resolveAsync: () => Promise.resolve({ ok: true, value: 'secret', diagnostics: [] }),
@@ -261,7 +263,9 @@ function createLedger(resources: readonly InfraOwnedResource[]): InfraLedger {
     schemaVersion: 1,
     projectId: 'sample',
     environment: 'production',
+    targets: [],
     resources,
+    outputs: [],
     artifacts: [],
   };
 }

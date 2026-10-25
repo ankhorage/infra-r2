@@ -4,8 +4,8 @@ import type {
   InfraResult,
 } from '@ankhorage/contracts/infra';
 
-import type { R2BucketControlPlane } from '../../../types/r2';
-import { resolveR2DesiredStateAsync } from './resolveR2DesiredStateAsync';
+import type { R2BucketControlPlane } from '../../../types/r2.js';
+import { resolveR2DesiredStateAsync } from './resolveR2DesiredStateAsync.js';
 
 /*** Plan R2 bucket creation and retained stale resources without mutation. */
 export async function planR2Async(

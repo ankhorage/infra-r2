@@ -1,7 +1,7 @@
 /** Public Cloudflare R2 object-storage adapter package boundary. */
-export { infraAdapterDescriptor } from './constants/infra';
-export { createCloudflareR2ControlPlane } from './features/object-storage/adapters/outbound/createCloudflareR2ControlPlane';
-export { createInfraAdapter } from './features/object-storage/composition/createInfraAdapter';
+export { infraAdapterDescriptor } from './constants/infra.js';
+export { createCloudflareR2ControlPlane } from './features/object-storage/adapters/outbound/createCloudflareR2ControlPlane.js';
+export { createInfraAdapter } from './features/object-storage/composition/createInfraAdapter.js';
 export type {
   CloudflareR2ControlPlaneOptions,
   R2AdapterOptions,
@@ -9,4 +9,4 @@ export type {
   R2BucketObservation,
   R2CloudRequest,
   R2Fetch,
-} from './types/r2';
+} from './types/r2.js';

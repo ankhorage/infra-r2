@@ -5,7 +5,7 @@ import type {
   InfraResult,
 } from '@ankhorage/contracts/infra';
 
-import type { R2BucketControlPlane, R2CloudRequest } from '../../../types/r2';
+import type { R2BucketControlPlane, R2CloudRequest } from '../../../types/r2.js';
 
 export interface R2DesiredState {
   readonly cloudRequest: R2CloudRequest;
@@ -22,7 +22,7 @@ export async function resolveR2DesiredStateAsync(
 ): Promise<InfraResult<R2DesiredState>> {
   const selection = context.desired.objectStorage;
   if (selection?.provider !== 'r2') return invalidSelection();
-  const buckets = resolveBucketNames(selection.buckets ?? []);
+  const buckets = resolveBucketNames(Object.keys(selection.buckets ?? {}));
   if (!buckets.ok) return buckets;
   const cloudRequest = await resolveR2CloudRequestAsync(context, selection);
   if (!cloudRequest.ok) return cloudRequest;

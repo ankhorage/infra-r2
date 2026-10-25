@@ -6,7 +6,7 @@ import type {
   InfraResult,
 } from '@ankhorage/contracts/infra';
 
-import type { R2BucketControlPlane } from '../../../types/r2';
+import type { R2BucketControlPlane } from '../../../types/r2.js';
 
 /*** Delete only ledger-owned, explicitly confirmed R2 buckets and retain every other bucket. */
 export async function destroyR2Async(

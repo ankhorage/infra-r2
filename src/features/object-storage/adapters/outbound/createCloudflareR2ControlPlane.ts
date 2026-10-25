@@ -7,7 +7,7 @@ import type {
   R2BucketObservation,
   R2CloudRequest,
   R2Fetch,
-} from '../../../../types/r2';
+} from '../../../../types/r2.js';
 
 /*** Create the concrete Cloudflare REST adapter for R2 bucket lifecycle operations. */
 export function createCloudflareR2ControlPlane(
