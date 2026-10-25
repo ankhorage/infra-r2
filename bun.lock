@@ -3,7 +3,7 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "@ankhorage/r2",
+      "name": "@ankhorage/infra-r2",
       "dependencies": {
         "@ankhorage/contracts": "^16.0.0",
         "@ankhorage/utility": "^0.8.0",
@@ -11,7 +11,7 @@
       "devDependencies": {
         "@ankhorage/devtools": "^1.14.6",
         "@ankhorage/paradox": "^0.1.24",
-        "@types/bun": "^1.4.1",
+        "@types/bun": "^1.4.2",
         "@types/node": "^26.4.1",
         "typescript": "~6.0.3",
       },
