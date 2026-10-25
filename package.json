@@ -41,9 +41,10 @@
   },
   "scripts": {
     "build": "rm -rf dist tsconfig.tsbuildinfo && bun x tsc -p tsconfig.build.json",
-    "typecheck": "bun x tsc --noEmit -p tsconfig.json",
+    "typecheck": "bun x tsc --noEmit -p tsconfig.json && bun x tsc --noEmit -p tsconfig.node-esm.json",
     "check-types": "bun run typecheck",
     "test": "bun test src",
+    "test:packed-consumer": "bun consumer-tests/packedConsumer.ts",
     "docs": "paradox && ankhorage-prettier --write README.md paradox",
     "prepack": "bun run build",
     "lint": "ankhorage-eslint . --max-warnings=0",
@@ -56,7 +57,7 @@
     "version-packages": "ankhorage-changeset version"
   },
   "dependencies": {
-    "@ankhorage/contracts": "^16.0.0",
+    "@ankhorage/contracts": "^26.2.2",
     "@ankhorage/utility": "^0.8.0"
   },
   "devDependencies": {

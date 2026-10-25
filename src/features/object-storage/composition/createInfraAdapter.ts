@@ -1,12 +1,12 @@
 import type { InfraServiceAdapter } from '@ankhorage/contracts/infra';
 
-import { infraAdapterDescriptor } from '../../../constants/infra';
-import type { R2AdapterOptions } from '../../../types/r2';
-import { createCloudflareR2ControlPlane } from '../adapters/outbound/createCloudflareR2ControlPlane';
-import { destroyR2Async } from '../application/destroyR2Async';
-import { getR2StatusAsync } from '../application/getR2StatusAsync';
-import { planR2Async } from '../application/planR2Async';
-import { reconcileR2Async } from '../application/reconcileR2Async';
+import { infraAdapterDescriptor } from '../../../constants/infra.js';
+import type { R2AdapterOptions } from '../../../types/r2.js';
+import { createCloudflareR2ControlPlane } from '../adapters/outbound/createCloudflareR2ControlPlane.js';
+import { destroyR2Async } from '../application/destroyR2Async.js';
+import { getR2StatusAsync } from '../application/getR2StatusAsync.js';
+import { planR2Async } from '../application/planR2Async.js';
+import { reconcileR2Async } from '../application/reconcileR2Async.js';
 
 /***
  * Create the canonical Cloudflare R2 object-storage adapter entrypoint.

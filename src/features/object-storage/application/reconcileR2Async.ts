@@ -5,8 +5,8 @@ import type {
   InfraResult,
 } from '@ankhorage/contracts/infra';
 
-import type { R2BucketControlPlane } from '../../../types/r2';
-import { resolveR2DesiredStateAsync } from './resolveR2DesiredStateAsync';
+import type { R2BucketControlPlane } from '../../../types/r2.js';
+import { resolveR2DesiredStateAsync } from './resolveR2DesiredStateAsync.js';
 
 /*** Idempotently create missing R2 buckets and return public connection metadata. */
 export async function reconcileR2Async(
