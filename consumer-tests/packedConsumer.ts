@@ -1,5 +1,5 @@
 import { execFileSync } from 'node:child_process';
-import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
+import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
@@ -7,6 +7,7 @@ const repositoryRoot = new URL('..', import.meta.url).pathname;
 const consumerDirectory = mkdtempSync(join(tmpdir(), 'ankhorage-infra-r2-consumer-'));
 const packedDirectory = join(consumerDirectory, 'packed');
 const temporaryCacheDirectory = join(tmpdir(), 'infra-r2-npm-cache');
+const consumerScript = 'consumer.mjs';
 
 try {
   mkdirSync(packedDirectory);
@@ -30,6 +31,7 @@ try {
       private: true,
       type: 'module',
       dependencies: { '@ankhorage/infra-r2': `file:${join(packedDirectory, archiveName)}` },
+      devDependencies: { typescript: '~6.0.3' },
     }),
   );
   writeFileSync(
@@ -43,6 +45,22 @@ try {
       "if (adapter.infraAdapterDescriptor.package !== '@ankhorage/infra-r2') throw new Error('package identity drifted');",
     ].join('\n'),
   );
+  writeFileSync(
+    join(consumerDirectory, 'consumer.ts'),
+    [
+      "import { createInfraAdapter, infraAdapterDescriptor } from '@ankhorage/infra-r2';",
+      'const factory: typeof createInfraAdapter = createInfraAdapter;',
+      'const packageName: string = infraAdapterDescriptor.package;',
+      'void factory;',
+      'void packageName;',
+    ].join('\n'),
+  );
+  writeFileSync(
+    join(consumerDirectory, 'tsconfig.json'),
+    JSON.stringify({
+      compilerOptions: { module: 'NodeNext', moduleResolution: 'NodeNext', noEmit: true },
+    }),
+  );
 
   execFileSync(
     'bun',
@@ -52,8 +70,21 @@ try {
       stdio: 'inherit',
     },
   );
-  execFileSync('bun', ['consumer.mjs'], { cwd: consumerDirectory, stdio: 'inherit' });
-  execFileSync('node', ['consumer.mjs'], { cwd: consumerDirectory, stdio: 'inherit' });
+  const packedManifest = JSON.parse(
+    readFileSync(join(consumerDirectory, 'node_modules/@ankhorage/infra-r2/package.json'), 'utf8'),
+  ) as { dependencies?: Record<string, string> };
+  const invalidDependency = Object.entries(packedManifest.dependencies ?? {}).find(([, range]) =>
+    /^(?:file:|link:|workspace:)/.test(range),
+  );
+  if (invalidDependency !== undefined) {
+    throw new Error(`Packed package has a non-public dependency: ${invalidDependency[0]}.`);
+  }
+  execFileSync('bun', [consumerScript], { cwd: consumerDirectory, stdio: 'inherit' });
+  execFileSync('node', [consumerScript], { cwd: consumerDirectory, stdio: 'inherit' });
+  execFileSync('bun', ['x', 'tsc', '--project', 'tsconfig.json'], {
+    cwd: consumerDirectory,
+    stdio: 'inherit',
+  });
 } finally {
   rmSync(consumerDirectory, { recursive: true, force: true });
 }

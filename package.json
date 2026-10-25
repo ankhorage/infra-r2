@@ -41,7 +41,7 @@
   },
   "scripts": {
     "build": "rm -rf dist tsconfig.tsbuildinfo && bun x tsc -p tsconfig.build.json",
-    "typecheck": "bun x tsc --noEmit -p tsconfig.json",
+    "typecheck": "bun x tsc --noEmit -p tsconfig.json && bun x tsc --noEmit -p tsconfig.node-esm.json",
     "check-types": "bun run typecheck",
     "test": "bun test src",
     "test:packed-consumer": "bun consumer-tests/packedConsumer.ts",
@@ -57,7 +57,7 @@
     "version-packages": "ankhorage-changeset version"
   },
   "dependencies": {
-    "@ankhorage/contracts": "^26.2.1",
+    "@ankhorage/contracts": "^26.2.2",
     "@ankhorage/utility": "^0.8.0"
   },
   "devDependencies": {
