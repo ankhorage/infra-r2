@@ -1,5 +1,11 @@
 # @ankhorage/r2
 
+## 0.3.0
+
+### Minor Changes
+
+- a4a6821: Use the current Infra adapter contracts and publish Node ESM-compatible package output.
+
 ## 0.2.2
 
 ### Patch Changes
