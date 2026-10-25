@@ -100,7 +100,14 @@ jobs:
 
       - name: Publish unpublished packages
         if: hashFiles('.changeset/config.json') != ''
-        run: bun run changeset -- publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_BOOTSTRAP_TOKEN }}
+        run: |
+          if [ -z "${NODE_AUTH_TOKEN:-}" ] || [ "$NODE_AUTH_TOKEN" = 'XXXXX-XXXXX-XXXXX-XXXXX' ]; then
+            echo "::error title=npm bootstrap authentication unavailable::NPM_BOOTSTRAP_TOKEN must be configured for this repository and must not be the setup-node placeholder."
+            exit 1
+          fi
+          bun run changeset -- publish
 
       - name: Finalize Changesets v3 tags and GitHub releases
         if: hashFiles('.changeset/config.json') != ''
