@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "kind": "adapter",
+  "title": "Ankhorage Cloudflare R2 Infrastructure",
+  "summary": "Provides a Cloudflare R2 object-storage service adapter for provider-neutral infrastructure composition.",
+  "purpose": "Translate portable object-storage service intent into Cloudflare R2 control-plane operations.",
+  "domain": "object storage infrastructure",
+  "responsibilities": [
+    "Create and reconcile R2-backed object-storage infrastructure through Cloudflare's account API.",
+    "Map provider responses and failures into the common infrastructure service result boundary.",
+    "Allow an injected control plane for deterministic tests or another trusted execution environment."
+  ],
+  "boundaries": [
+    "Does not define provider-neutral infrastructure contracts.",
+    "Does not implement application object upload, download, or asset metadata operations.",
+    "Does not manage unrelated Cloudflare services."
+  ],
+  "audience": [
+    "Infrastructure hosts selecting Cloudflare R2 as an object-storage service.",
+    "Operators provisioning R2 resources through portable infrastructure intent."
+  ],
+  "useCases": [
+    "Provision or reconcile an R2 object-storage service.",
+    "Inspect provider-neutral service state backed by Cloudflare R2.",
+    "Inject a deterministic R2 control plane for tests."
+  ],
+  "architecture": {
+    "role": "An infrastructure service adapter translating portable object-storage intent to the Cloudflare R2 API.",
+    "invariants": [
+      "Cloudflare-specific behavior remains behind the control-plane adapter.",
+      "Public results conform to the provider-neutral service boundary.",
+      "Tests can replace the external API through explicit injection."
+    ]
+  },
+  "implements": [
+    {
+      "packageName": "@ankhorage/contracts",
+      "subpath": "./infra",
+      "interfaceId": "InfraServiceAdapter"
+    }
+  ],
+  "constraints": {
+    "platforms": ["Cloudflare R2"],
+    "configuration": [
+      "Cloudflare account API credentials are required for the default control plane."
+    ],
+    "limitations": [
+      "Application data-plane object operations are outside this infrastructure adapter."
+    ]
+  }
+}
